@@ -7,7 +7,6 @@ on:
   pull_request:
     branches:
       - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,3 +23,11 @@ jobs:
 
       - name: Test
         run: make test
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: calculator-build
+          path: |
+            calculator*
+            test_calc*
